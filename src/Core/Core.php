@@ -2,6 +2,9 @@
 
 namespace App\Core;
 
+use App\Http\Response;
+use App\Http\Request;
+
 class Core
 {
     public static function dispath(array $routes)
@@ -30,7 +33,8 @@ class Core
                 // instanciando o controller com metodo
                 $controller = $prefix . $controller;
                 $extendedController = new $controller();
-                $extendedController->$method();
+                // consigo recuperar os metodos dentro do controller
+                $extendedController->$method(new Request, new Response, $params);
             }
         }
     }
