@@ -4,17 +4,30 @@ namespace APP\Controllers;
 
 use App\Http\Request;
 use App\Http\Response;
+use App\Utils\RenderView;
 
 class HomeController
 {
     public function index(Request $request, Response $response)
     {
-        echo "Welcome";
+        return $response::json([
+            'name' => "foo",
+        ]);
     }
 
     public function show(Request $request, Response $response, array $params)
     {
-        echo "Welcome";
+        try {
+            // nome da view, variaveis que vao ser exibidas na view
+            return RenderView::render('home', [
+                'title' => "titulo gerado por meio do php",
+                'id' => $params[0],
+            ]);
+        } catch (\Exception $err) {
+            return $response::json([
+                'error' => $err->getMessage(),
+            ], 400);
+        }
     }
 
     public function create(Request $request, Response $response)
