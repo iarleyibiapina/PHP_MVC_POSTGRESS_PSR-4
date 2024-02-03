@@ -22,6 +22,10 @@ class HomeController
             return RenderView::render('home', [
                 'title' => "titulo gerado por meio do php",
                 'id' => $params[0],
+                'data' => [
+                    'name' => 'foo',
+                    'last_name' => 'bar',
+                ]
             ]);
         } catch (\Exception $err) {
             return $response::json([
