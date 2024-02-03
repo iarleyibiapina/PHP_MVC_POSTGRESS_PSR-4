@@ -6,7 +6,7 @@ use App\Models\Database;
 
 class User extends Database
 {
-    public function all()
+    public static function all()
     {
         try {
             $pdo = self::getConnection();
@@ -20,7 +20,7 @@ class User extends Database
         }
     }
 
-    public function find(int $id)
+    public static function find(int $id)
     {
         try {
 
