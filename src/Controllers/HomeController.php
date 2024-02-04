@@ -11,8 +11,14 @@ class HomeController
 {
     public function index(Request $request, Response $response)
     {
-        return $response::json([
-            'name' => "foo",
+        // return $response::json([
+        //     'name' => "foo",
+        // ]);
+
+        return Response::json([
+            // 'data' => UserService::findById($params[0]),
+            'msg' => 'fromView',
+            'data' => UserService::getAll(),
         ]);
     }
 
@@ -34,10 +40,22 @@ class HomeController
         //         ], 400);
         //     }
 
+        $user = UserService::getById($params[0]);
+        if (isset($user['error'])) {
+            return Response::json([
+                'error' => $user['error'],
+            ]);
+        }
+        if (isset($user['error_db'])) {
+            return Response::json([
+                'error' => $user['error_db'],
+            ]);
+        }
+
         return Response::json([
             // 'data' => UserService::findById($params[0]),
             'msg' => 'fromView',
-            'data' => UserService::getAll(),
+            'data' => $user,
         ]);
     }
 
