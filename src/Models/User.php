@@ -26,7 +26,7 @@ class User extends Database
 
             $pdo = self::getConnection();
 
-            $stm = $pdo->prepare('SELECT * FROM "users" WHERE id = ?');
+            $stm = $pdo->prepare('SELECT * FROM "user" WHERE id = ?');
             $stm->execute([$id]);
 
             if ($stm->rowCount() > 0) {
