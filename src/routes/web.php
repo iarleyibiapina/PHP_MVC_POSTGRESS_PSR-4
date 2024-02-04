@@ -6,7 +6,7 @@ use App\Core\Core;
 
 Route::get('/', 'HomeController@index');
 Route::post('/create', 'HomeController@create');
-Route::post('/users/{id}/show', 'HomeController@show');
+Route::get('/users/{id}/show', 'HomeController@show');
 Route::put('/create', 'HomeController@update');
 Route::delete('/create', 'HomeController@delete');
 
