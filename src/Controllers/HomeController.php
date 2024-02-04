@@ -61,11 +61,13 @@ class HomeController
 
     public function create(Request $request, Response $response)
     {
-        echo "Welcome";
+        return Response::redirect('http://localhost/');
     }
     public function store(Request $request, Response $response)
     {
-        echo "Welcome";
+        return Response::json([
+            'data' => $request::body(),
+        ]);
     }
     public function edit(Request $request, Response $response, array $params)
     {
