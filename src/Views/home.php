@@ -14,10 +14,9 @@
     <p><?= $title ?></p>
     <p><?= $id ?></p>
     <p><?= var_dump($data) ?></p>
-
+    <?php $resp = $data[1] ?>
+    <p><?= var_dump($resp) ?></p>
     <p>Exemplos para retornar em consultas</p>
-    <p><?= $data['name'] ?></p>
-    <p><?= $data['last_name'] ?></p>
 
 </body>
 
