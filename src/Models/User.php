@@ -11,12 +11,12 @@ class User extends Database
         try {
             $pdo = self::getConnection();
 
-            $stm = $pdo->query("SELECT * FROM users");
+            $stm = $pdo->query('SELECT * FROM "user"');
 
             // retorna array vazio caso não exista usuario
             return $stm->fetchAll(\PDO::FETCH_ASSOC ?? []);
         } catch (\PDOException $e) {
-            throw new \Exception($e->errorInfo[0]);
+            throw new \Exception("Excp in model" . $e->errorInfo[0]);
         }
     }
 
@@ -26,7 +26,7 @@ class User extends Database
 
             $pdo = self::getConnection();
 
-            $stm = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+            $stm = $pdo->prepare('SELECT * FROM "users" WHERE id = ?');
             $stm->execute([$id]);
 
             if ($stm->rowCount() > 0) {
