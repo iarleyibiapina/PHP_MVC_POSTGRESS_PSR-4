@@ -9,7 +9,10 @@ class Response
     {
         http_response_code(200);
 
-        foreach ($data as $key => $value) {
+        // echo "<pre>";
+        // var_dump($data['data']);
+        // echo "</pre>";
+        foreach ($data['data'][0] as $key => $value) {
             header($key . ":" . $value);
         }
 
